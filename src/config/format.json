@@ -1,0 +1,9 @@
+{
+    "servers": [
+        {
+            "name": "[optional] The name of this server: My Blog",
+            "srcHost": "the source hostname: www.g.levy.at",
+            "dstHost": "the destination hostname (or ip): 104.236.158.100",
+        },
+    ]
+}

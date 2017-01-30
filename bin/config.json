@@ -1,0 +1,9 @@
+{
+    "servers": [
+        {
+            "name": "My Blog",
+            "srcHost": "www.g.levy.at",
+            "dstHost": "104.236.158.100"
+        }
+    ]
+}
