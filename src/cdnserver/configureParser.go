@@ -6,6 +6,8 @@ import (
     "config"
     "errors"
     "strconv"
+    . "storage"
+    . "storage/general"
 )
 
 type CDNServerConf struct {
@@ -13,6 +15,9 @@ type CDNServerConf struct {
 
     srcHost string
     dstHost string
+    extends map[string]interface{}
+
+    storage StorageAPI
 }
 
 var confList []*CDNServerConf
@@ -43,6 +48,21 @@ func InitAllServerConf() error {
                 L.Warn(newConf.confName, "has incorrect tag 'dstHost'. Ignore it.")
                 continue
             }
+            if newConf.extends, ok2=e["extends"].(map[string]interface{}); !ok2 {
+                newConf.extends=map[string]interface{}{}
+            }
+
+            if storageType, ok2:=e["storage"].(string); !ok2 {
+                newConf.storage=GetStorageAPI("simple-mem", newConf.extends)
+            } else {
+                newConf.storage=GetStorageAPI(storageType, newConf.extends)
+                if newConf.storage==nil {
+                    L.Warn(newConf.confName, "has incorrect tag 'storage'. Ignore it.")
+                    continue
+                }
+            }
+
+            L.Log(newConf.confName, "has set up!")
             confList=append(confList, newConf)
         }
     }

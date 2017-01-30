@@ -1,9 +1,10 @@
 {
     "servers": [
         {
-            "name": "[optional] The name of this server: My Blog",
-            "srcHost": "the source hostname: www.g.levy.at",
-            "dstHost": "the destination hostname (or ip): 104.236.158.100",
+            "name":     "[optional] The name of this server: My Blog",
+            "srcHost":  "the source hostname: www.g.levy.at",
+            "dstHost":  "the destination hostname (or ip): 104.236.158.100",
+            "storage":  "[optional] the underlying storage engine: [simple-mem, memory, disk], default is disk",
         },
     ]
 }
