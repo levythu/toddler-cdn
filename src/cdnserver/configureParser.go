@@ -62,7 +62,7 @@ func InitAllServerConf() error {
                 }
             }
 
-            L.Log(newConf.confName, "has set up!")
+            L.Log("<"+newConf.confName+">", "has set up!")
             confList=append(confList, newConf)
         }
     }
