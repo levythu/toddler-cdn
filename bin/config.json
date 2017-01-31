@@ -1,9 +1,14 @@
 {
     "servers": [
         {
-            "name": "My Blog",
+            "name": "My-Blog",
             "srcHost": "www.g.levy.at",
             "dstHost": "104.236.158.100"
+        },
+        {
+            "name": "Localhost-EXP",
+            "srcHost": "echohost",
+            "dstHost": "levy.at"
         },
         {
             "dstHost": "104.236.158.100"

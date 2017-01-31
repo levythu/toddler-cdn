@@ -21,10 +21,12 @@ type CDNServerConf struct {
 }
 
 var confList []*CDNServerConf
+var confMap map[string]*CDNServerConf
 
 func InitAllServerConf() error {
     var anonyCount=0
     confList=[]*CDNServerConf{}
+    confMap=map[string]*CDNServerConf{}
     if list, ok:=config.Conf["servers"].([]interface{}); !ok {
         return errors.New("Incorrect tag 'servers'")
     } else {
@@ -63,6 +65,7 @@ func InitAllServerConf() error {
             }
 
             L.Log("<"+newConf.confName+">", "has set up!")
+            confMap[newConf.srcHost]=newConf
             confList=append(confList, newConf)
         }
     }
