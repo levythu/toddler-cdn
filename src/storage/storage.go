@@ -12,4 +12,9 @@ type StorageAPI interface {
     // issue a GET. If the key does not exist or any error is present, return nil
     // it must be threadsafe and idempotent.
     Get(key string) []byte
+
+    // abandon the storage media. Remove occupied resources and release all the
+    // states required. The StorageAPI should never be called if the func returned
+    // with nil error
+    Abandon() error
 }

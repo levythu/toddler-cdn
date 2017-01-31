@@ -28,6 +28,10 @@ func (this *SimpleMemoryStorage)Put(key string, content []byte) error {
 func (this *SimpleMemoryStorage)Get(key string) []byte {
     this.lock.Lock()
     defer this.lock.Unlock()
-    
+
     return this.m[key]
+}
+
+func (this *SimpleMemoryStorage)Abandon() error {
+    return nil
 }

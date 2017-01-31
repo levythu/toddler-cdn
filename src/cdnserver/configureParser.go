@@ -53,6 +53,8 @@ func InitAllServerConf() error {
             if newConf.extends, ok2=e["extends"].(map[string]interface{}); !ok2 {
                 newConf.extends=map[string]interface{}{}
             }
+            newConf.extends["srcHost"]=newConf.srcHost
+            newConf.extends["dstHost"]=newConf.dstHost
 
             if storageType, ok2:=e["storage"].(string); !ok2 {
                 newConf.storage=GetStorageAPI("simple-mem", newConf.extends)
