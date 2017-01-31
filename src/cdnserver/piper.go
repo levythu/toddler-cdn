@@ -6,6 +6,7 @@ import (
     "crypto/tls"
     "strings"
     "io/ioutil"
+    "encoding/json"
 )
 
 type IntermediateContent struct {
@@ -87,4 +88,16 @@ func renderResponse(res Response, iData *IntermediateContent) {
     deepCopyHeaderIn(iData.Header, oRes.Header())
     oRes.WriteHeader(iData.StatusCode)
     oRes.Write(iData.Content)
+}
+
+func serializeIC(iData *IntermediateContent) ([]byte, error) {
+    return json.Marshal(iData)
+}
+
+func parseIC(data []byte) (*IntermediateContent, error) {
+    var t IntermediateContent
+    if err:=json.Unmarshal(data, &t); err!=nil {
+        return nil, err
+    }
+    return &t, nil
 }

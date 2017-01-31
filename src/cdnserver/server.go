@@ -35,10 +35,25 @@ func onRequest(req Request, res Response) {
         var desURL=*(req.R().URL)
         desURL.Scheme="http"
         desURL.Host=conf.dstHost
+
+        if cont:=conf.storage.Get(desURL.String()); cont!=nil {
+            if iData, err:=parseIC(cont); err==nil {
+                renderResponse(res, iData)
+                return
+            } else {
+                L.Warn("An error occured in parsing IntermediateContent json:", err)
+            }
+        }
+
         if iData, err:=Pipe(req, desURL.String()); err!=nil {
             res.Status("Failed to get:"+err.Error(), 500)
         } else {
             renderResponse(res, iData)
+            if cont, err:=serializeIC(iData); err!=nil {
+                L.Warn("An error occured in serializing IntermediateContent json:", err)
+            } else {
+                conf.storage.Put(desURL.String(), cont)
+            }
         }
     } else {
         res.Status("Invalid hostname", 400)
