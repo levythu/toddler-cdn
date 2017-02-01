@@ -9,6 +9,8 @@ import (
     "time"
 )
 
+// TODO: implement size control & -1 valid time
+
 const DEFAULT_ROOT_PATH="./diskstorage/"
 
 // implement storage.StorageAPI

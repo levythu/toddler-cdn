@@ -7,8 +7,10 @@
             "storage":  "[optional] the underlying storage engine: [simple-mem, memory, disk], default is disk",
             "extends": {
                 "__comment": "extends properties that may be used to configure everything for storage, etc.
-                    - TTL: [optional] the cache live time in seconds, and -1 forever. Default is 1 hour.",
+                    - TTL: [optional] the cache live time in seconds, and -1 forever. Default is 1 hour.
+                    - MaxSize: [optional] the max size in MB of cache folder. Default is 20MB",
                 "TTL": 3600,
+                "maxSize": 10,
             },
         },
     ]

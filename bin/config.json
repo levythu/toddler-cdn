@@ -14,13 +14,11 @@
             "name": "Localhost-Static",
             "srcHost": "localhost",
             "dstHost": "static.levy.at",
-            "storage": "disk"
-        },
-        {
-            "dstHost": "104.236.158.100"
-        },
-        {
-            "dstHost": "104.236.158.100"
+            "storage": "disk",
+            "extends": {
+                "TTL": 60,
+                "maxSize": 1
+            }
         }
     ]
 }
