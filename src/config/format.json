@@ -5,6 +5,11 @@
             "srcHost":  "the source hostname: www.g.levy.at",
             "dstHost":  "the destination hostname (or ip): 104.236.158.100",
             "storage":  "[optional] the underlying storage engine: [simple-mem, memory, disk], default is disk",
+            "extends": {
+                "__comment": "extends properties that may be used to configure everything for storage, etc.
+                    - TTL: [optional] the cache live time in seconds, and -1 forever. Default is 1 hour.",
+                "TTL": 3600,
+            },
         },
     ]
 }
